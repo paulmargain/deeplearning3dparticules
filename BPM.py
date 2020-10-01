@@ -59,10 +59,10 @@ for a in range (256):
             pupil3[a][b]=0
 
 
-y0 = np.fft.ifft2(np.fft.fft2(y)*np.exp(-i*dphi_ext*FPDist)) #overflow ici ?
-y1 = np.fft.ifft2(np.fft.fft2(y)*np.exp(-i*dphi_ext*FPDist)*pupil1) 
-y2 = np.fft.ifft2(np.fft.fft2(y)*np.exp(-i*dphi_ext*FPDist)*pupil2) 
-y3 = np.fft.ifft2(np.fft.fft2(y)*np.exp(-i*dphi_ext*FPDist)*pupil3) 
+y0 = np.fft.fftshift(np.fft.ifft2(np.fft.fft2(y)*np.exp(-i*dphi_ext*FPDist))) 
+y1 = np.fft.fftshift(np.fft.ifft2(np.fft.fft2(y)*np.exp(-i*dphi_ext*FPDist)*pupil1))
+y2 = np.fft.fftshift(np.fft.ifft2(np.fft.fft2(y)*np.exp(-i*dphi_ext*FPDist)*pupil2))
+y3 = np.fft.fftshift(np.fft.ifft2(np.fft.fft2(y)*np.exp(-i*dphi_ext*FPDist)*pupil3))
                 
 y0 = y0*np.exp(i*k*mod_dist) #BPM original plan is missing this global phase, can be optional
 y1 = y1*np.exp(i*k*mod_dist) 
